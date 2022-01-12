@@ -1,0 +1,3 @@
+/home/islam/CppProjects/Tests/build/CMakeFiles/main.dir
+/home/islam/CppProjects/Tests/build/CMakeFiles/edit_cache.dir
+/home/islam/CppProjects/Tests/build/CMakeFiles/rebuild_cache.dir
