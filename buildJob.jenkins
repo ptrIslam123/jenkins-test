@@ -47,7 +47,15 @@ pipeline {
 
     post {
         always {
-            sh  '\"=====END JOB=======\"'
+            sh  'echo \"=====END JOB=======\"'
+        }
+
+        success {
+            sh  'echo \"=====SUCCESS JOB=======\"'
+        }
+
+        failure {
+            sh  'echo \"=====FAILYRE JOB=======\"'
         }
     }
 }
