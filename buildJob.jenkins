@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+
+    triggers {
+        pollSCM('* * * * *')
+    }
+
+    stages {
+        stage("Build") {
+            steps {
+                echo "========executing Build========"
+                sh '''
+                    rm -rf build/
+                    mkdir build
+                    cd build/
+                    cmake ..
+                    make
+                '''
+            }
+
+            post {
+                echo "!!!!"
+            }
+        }
+
+        stage("Run") {
+            steps {
+                echo "=========executing Run========="
+                sh '''
+                cd build/
+                ./main
+                '''
+            }
+        }
+
+        stage("Test") {
+            steps {
+                echo "=============executins Test========"
+                sh '''
+                    cd tests
+                    rm -rf build/
+                    mkdir build
+                    cd build/
+                    cmake ..
+                    make
+                    ./test
+                '''
+            }
+        }
+    }
+}
