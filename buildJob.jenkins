@@ -47,7 +47,7 @@ pipeline {
 
     post {
         always {
-            echo "=====END JOB======="
+            sh  '\"=====END JOB=======\"'
         }
     }
 }
