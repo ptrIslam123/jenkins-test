@@ -13,15 +13,15 @@ pipeline {
                     make
                 '''
             }
+        }
 
-            stage("Run") {
-                steps {
-                    echo "=========executing Run========="
-                    sh '''
-                    ls -lt
-                    ./main
-                    '''
-                }
+        stage("Run") {
+            steps {
+                echo "=========executing Run========="
+                sh '''
+                ls -lt
+                ./main
+                '''
             }
         }
     }
