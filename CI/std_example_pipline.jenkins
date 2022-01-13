@@ -47,7 +47,12 @@ pipeline {
 
     post {
         success {
-            junit 'build/reports/report.xml'
+            sh '''
+                mkdir reports
+                cd report/
+                touch report.xml
+            '''
+            junit 'reports/report.xml'
             sh 'ls -lt'
         }
     }
