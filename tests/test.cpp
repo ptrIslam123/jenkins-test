@@ -4,7 +4,7 @@
 
 int main() {
 
-    assert(sum(10, 20) == 30);
+    assert(sum(10, 20) == 40);
 
     return 0;    
 }
