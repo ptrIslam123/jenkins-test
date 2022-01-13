@@ -47,13 +47,15 @@ pipeline {
 
     post {
         success {
+            echo "====Successful Finich========"
+        }
+
+        failure {
             sh '''
-                mkdir reports
-                cd report/
-                touch report.xml
+            git reset --hard HEAD~1
+            git push --force
             '''
-            junit 'report.xml'
-            sh 'ls -lt'
+            echo "======Remove last error commit from GitHub========="
         }
     }
 }
