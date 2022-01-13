@@ -46,15 +46,16 @@ pipeline {
     }
 
     post {
+        always {
+            emailext body: 'Test Message',
+            subject: 'Test Subject',
+            to: 'i.kardanov@wisetech.pro'
+        }
         success {
             echo "====Successful Finich========"
         }
 
         failure {
-            sh '''
-                git reset --hard HEAD~1
-                git push --force origin master
-            '''
             echo "======Remove last error commit from GitHub========="
         }
     }
