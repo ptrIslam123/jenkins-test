@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo "=========executing Run========="
                 sh '''
-                ls -lt
+                cd build/
                 ./main
                 '''
             }
