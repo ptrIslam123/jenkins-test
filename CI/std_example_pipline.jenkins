@@ -52,7 +52,7 @@ pipeline {
                 cd report/
                 touch report.xml
             '''
-            junit 'reports/report.xml'
+            junit 'report.xml'
             sh 'ls -lt'
         }
     }
