@@ -1,17 +1,59 @@
 pipeline {
     agent any
 
+    triggers {
+        pollSCM('* * * * *')
+    }
+
     stages {
-        stage('Hello') {
+        stage("Build") {
             steps {
-                echo 'Hello World'
+                echo "========executing Build========"
+                sh '''
+                    rm -rf build/
+                    mkdir build
+                    cd build/
+                    cmake ..
+                    make
+                '''
+            }
+        }
+
+        stage("Run") {
+            steps {
+                echo "=========executing Run========="
+                sh '''
+                cd build/
+                ./main
+                '''
+            }
+        }
+
+        stage("Test") {
+            steps {
+                echo "=============executins Test========"
+                sh '''
+                    cd tests
+                    rm -rf build/
+                    mkdir build
+                    cd build/
+                    cmake ..
+                    make
+                    ./test
+                '''
             }
         }
     }
-    
-    post {
-        always {
-            echo 'Post Always'
+
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
         }
     }
 }
