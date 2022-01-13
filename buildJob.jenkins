@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    triggers {
+        pollSCM('* * * * *')
+        }
+
     stages {
         stage("Build") {
             steps {
@@ -35,6 +39,7 @@ pipeline {
                     cd build/
                     cmake ..
                     make
+                    ./test
                 '''
             }
         }
