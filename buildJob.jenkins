@@ -1,34 +1,28 @@
-pipeline{
+pipeline {
     agent any
 
-    stages{
-        stage("Build"){
-            steps{
+    stages {
+        stage("Build") {
+            steps {
                 echo "========executing Build========"
-                sh 'ls -lt'
+                sh '''
+                    rm -rf build/
+                    mkdir build
+                    cd build/
+                    cmake ..
+                    make
+                '''
             }
-            post{
-                always{
-                    echo "========Build always========"
-                }
-                success{
-                    echo "========Build executed successfully========"
-                }
-                failure{
-                    echo "========Build execution failed========"
+
+            stage("Run") {
+                steps {
+                    echo "=========executing Run========="
+                    sh '''
+                    ls -lt
+                    ./main
+                    '''
                 }
             }
-        }
-    }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
         }
     }
 }
