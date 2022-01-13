@@ -19,7 +19,9 @@ pipeline {
             }
 
             post {
-                echo "!!!!"
+                always {
+                    echo "!!!!"
+                }
             }
         }
 
