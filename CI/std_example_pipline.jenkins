@@ -46,20 +46,9 @@ pipeline {
     }
 
     post {
-        always {
-            echo "===Always===="
-        }
-
         success {
-            echo "=====Success===="
-
-            mail to: 'i.kardanov@wisetech.pro'
-                subject: 'Jenkins-Job Successful'
-                body: 'Some message!!!'
-        }
-
-        failure {
-            echo "=======Failure======"
+            junit 'build/reports/report.xml'
+            sh 'ls -lt'
         }
     }
 }
