@@ -45,19 +45,15 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            steps {
-                sh  'echo \"=====END JOB=======\"'
-            }
+    post{
+        always{
+            echo "========always========"
         }
-
-        success {
-            sh  'echo \"=====SUCCESS JOB=======\"'
+        success{
+            echo "========pipeline executed successfully ========"
         }
-
-        failure {
-            sh  'echo \"=====FAILYRE JOB=======\"'
+        failure{
+            echo "========pipeline execution failed========"
         }
     }
 }
