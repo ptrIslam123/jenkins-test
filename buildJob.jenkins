@@ -17,12 +17,6 @@ pipeline {
                     make
                 '''
             }
-
-            post {
-                always {
-                    echo "!!!!"
-                }
-            }
         }
 
         stage("Run") {
@@ -48,6 +42,12 @@ pipeline {
                     ./test
                 '''
             }
+        }
+    }
+
+    post {
+        always {
+            echo "=====END JOB======="
         }
     }
 }
