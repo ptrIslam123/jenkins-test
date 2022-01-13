@@ -1,2 +1,3 @@
-wqbuild/*
+build/*
+tests/build/*
 .vscode/
