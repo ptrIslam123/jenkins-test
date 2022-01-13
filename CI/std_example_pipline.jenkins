@@ -52,10 +52,14 @@ pipeline {
 
         success {
             echo "=====Success===="
+
+            mail to: 'i.kardanov@wisetech.pro'
+                subject: 'Jenkins-Job Successful'
+                body: 'Some message!!!'
         }
 
         failure {
-            echo "======Failyre======"
+            echo "=======Failure======"
         }
     }
 }
