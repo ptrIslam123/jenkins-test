@@ -52,8 +52,7 @@ pipeline {
 
         failure {
             sh '''
-            git reset --hard HEAD~1
-            git push --force origin master
+                git log
             '''
             echo "======Remove last error commit from GitHub========="
         }
