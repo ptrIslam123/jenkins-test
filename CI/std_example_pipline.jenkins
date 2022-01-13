@@ -52,7 +52,6 @@ pipeline {
 
         failure {
             sh '''
-                git log
             '''
             echo "======Remove last error commit from GitHub========="
         }
