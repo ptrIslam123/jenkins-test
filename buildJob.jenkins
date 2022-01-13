@@ -47,7 +47,9 @@ pipeline {
 
     post {
         always {
-            sh  'echo \"=====END JOB=======\"'
+            steps {
+                sh  'echo \"=====END JOB=======\"'
+            }
         }
 
         success {
