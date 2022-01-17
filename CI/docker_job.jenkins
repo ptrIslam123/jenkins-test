@@ -6,7 +6,8 @@ pipeline{
             steps{
                 echo "========executing Docker build========"
                 sh '''
-                    docker build -t jenkins-build -f CI/
+                    cd CI/
+                    docker build -t jenkins-build .
                     docker run jenkins-build 
                 '''
             }
