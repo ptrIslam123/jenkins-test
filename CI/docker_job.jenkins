@@ -1,16 +1,15 @@
 pipeline{
-    agent {
-        dockerfile {
-            filename 'docker_job.jenkins'
-            dir './'
-            label 'master'
-        }
-    }
-
+    agent any
+    
     stages{
         stage("Docker build"){
             steps{
                 echo "========executing Docker build========"
+                sh '''
+                    cd CI/
+                    docker build -t jenkins-build .
+                    docker run jenkins-build 
+                '''
             }
         }
     }
