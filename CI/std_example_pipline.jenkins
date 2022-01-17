@@ -47,7 +47,7 @@ pipeline {
 
     post {
         always {
-            retry(10) {
+            retry(10) { 
                 emailext body: 'Test Message',
                 subject: 'Test Subject',
                 to: 'i.kardanov@wisetech.pro'

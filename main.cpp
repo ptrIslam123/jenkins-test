@@ -9,14 +9,35 @@
 typedef Wrapper<Foo, DynamicAllocator<Foo> > DynamicFoo;
 typedef Wrapper<Foo, StaticAllocator<Foo> > StaticFoo;
 
+
+struct A {
+    A() {
+        std::cout << "A()\n";
+    }
+
+    virtual ~A() {
+        std::cout << "~A()\n";
+    }
+};
+
+
+struct B : A {
+    B() {
+        std::cout << "B()\n";
+    }
+
+    ~B() {
+        std::cout << "~B()\n";
+    }
+};
+
 int main() {
-    
+    B* b = new B();
+    A* a = b;
 
-   StaticFoo f1;
-   StaticFoo f2;
+    delete a;
 
-   f1->method();
-   f2->method();
+
 
     return 0;
 }
